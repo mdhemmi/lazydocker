@@ -20,9 +20,11 @@ import (
 
 const DEFAULT_VERSION = "unversioned"
 
+var version = "0.0.1"
+
 var (
 	commit      string
-	version     = DEFAULT_VERSION
+	//version     = DEFAULT_VERSION
 	date        string
 	buildSource = "unknown"
 
