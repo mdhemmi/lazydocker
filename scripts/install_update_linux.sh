@@ -19,6 +19,14 @@ GITHUB_URL="https://github.com/jesseduffield/lazydocker/releases/download/${GITH
 
 # install/update the local binary
 curl -L -o lazydocker.tar.gz $GITHUB_URL
-tar xzvf lazydocker.tar.gz lazydocker
-install -Dm 755 lazydocker -t "$DIR"
-rm lazydocker lazydocker.tar.gz
+tar xzf lazydocker.tar.gz
+# Find the extracted directory (it will be the only lazydocker_* directory)
+ARCHIVE_DIR=$(find . -maxdepth 1 -type d -name "lazydocker_*" | head -1)
+if [ -n "$ARCHIVE_DIR" ] && [ -f "$ARCHIVE_DIR/lazydocker" ]; then
+	install -Dm 755 "$ARCHIVE_DIR/lazydocker" -t "$DIR"
+	rm -rf "$ARCHIVE_DIR" lazydocker.tar.gz
+else
+	echo "Error: Could not find lazydocker binary in archive"
+	rm -f lazydocker.tar.gz
+	exit 1
+fi
