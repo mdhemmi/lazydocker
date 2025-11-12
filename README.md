@@ -141,7 +141,7 @@ You can manually download a binary release from [the release page](https://githu
 Automated install/update, don't forget to always verify what you're piping into bash:
 
 ```sh
-curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+curl https://raw.githubusercontent.com/mdhemmi/lazydocker/master/scripts/install_update_linux.sh | bash
 ```
 The script installs downloaded binary to `$HOME/.local/bin` directory by default, but it can be changed by setting `DIR` environment variable.
 
